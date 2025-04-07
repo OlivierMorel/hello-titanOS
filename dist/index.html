@@ -71,15 +71,18 @@ SPDX-License-Identifier: Apache-2.0
 	// Affichage du user Agent
 
   
-  window.onDeviceInfoReady(function (info) {
-    console.log("Infos TitanOS prêtes :", info)
-    if (info) {
-      document.getElementById('os').innerText = `OS: ${info.Capability.os}`;
-    } else
-    console.log("info null")
-  })
+
 
   document.addEventListener('DOMContentLoaded', function () {
+
+    window.onDeviceInfoReady(function (info) {
+      console.log("Infos TitanOS prêtes :", info)
+      if (info) {
+        document.getElementById('os').innerText = `OS: ${info.Capability.os}`;
+      } else
+      console.log("info null")
+    })
+
     if (typeof DeviceInfo !== 'undefined') {
       const deviceInfo = {
         appStore: DeviceInfo.Channel.appStore,
