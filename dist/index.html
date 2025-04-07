@@ -70,6 +70,12 @@ SPDX-License-Identifier: Apache-2.0
 
 	// Affichage du user Agent
 
+  
+  window.onDeviceInfoReady(function (info) {
+    console.log("Infos TitanOS prêtes :", info)
+    document.getElementById('manufacturer').innerText = `Manufacturer: ${deviceInfo.vendor}`;
+  })
+
   document.addEventListener('DOMContentLoaded', function () {
     if (typeof DeviceInfo !== 'undefined') {
       const deviceInfo = {
@@ -132,6 +138,11 @@ SPDX-License-Identifier: Apache-2.0
     <p id="firmwareVersion" class="info">Fetching version...</p>
     <p id="os" class="info">Fetching OS...</p>
     <p id="userAgent" class="info">Fetching user agent...</p>
+
+    <p id="modelName" class="info">Fetching model name...</p>
+
+
+    <pre></pre>
   </div>
 </body>
 
