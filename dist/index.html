@@ -73,7 +73,7 @@ SPDX-License-Identifier: Apache-2.0
   
   window.onDeviceInfoReady(function (info) {
     console.log("Infos TitanOS prêtes :", info)
-    document.getElementById('manufacturer').innerText = `Manufacturer: ${deviceInfo.vendor}`;
+    document.getElementById('manufacturer').innerText = `Manufacturer: ${info.vendor}`;
   })
 
   document.addEventListener('DOMContentLoaded', function () {
