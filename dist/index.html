@@ -45,7 +45,7 @@ SPDX-License-Identifier: Apache-2.0
 </head>
 
 <script 
-  src="https://partners.titanos.tv/static/device-info-sdk.js" 
+  src="./device-info-sdk.js" 
   type="text/javascript">
 </script>
 
@@ -71,20 +71,48 @@ SPDX-License-Identifier: Apache-2.0
 	// Affichage du user Agent
 
   document.addEventListener('DOMContentLoaded', function () {
-  if (typeof DeviceInfo !== 'undefined') {
-    const deviceInfo = {
-      vendor: DeviceInfo.Channel.vendor,
-      brand: DeviceInfo.Channel.brand,
-      platform: DeviceInfo.Product.platform,
-      year: DeviceInfo.Product.year,
-      deviceID: DeviceInfo.Product.deviceID,
-      firmwareComponentID: DeviceInfo.Product.firmwareComponentID,
-      firmwareVersion: DeviceInfo.Product.firmwareVersion,
-      os: DeviceInfo.Capability.os,
-    };
+    if (typeof DeviceInfo !== 'undefined') {
+      const deviceInfo = {
+        appStore: DeviceInfo.Channel.appStore,
+        vendor: DeviceInfo.Channel.vendor,
+        brand: DeviceInfo.Channel.brand,
+        platform: DeviceInfo.Product.platform,
+        year: DeviceInfo.Product.year,
+        deviceID: DeviceInfo.Product.deviceID,
+        WhaleAdID: DeviceInfo.Product.WhaleAdID,
+        firmwareComponentID: DeviceInfo.Product.firmwareComponentID,
+        firmwareVersion: DeviceInfo.Product.firmwareVersion,
+        os: DeviceInfo.Capability.os,
+        browserEngine: DeviceInfo.Capability.browserEngine,
+        hasStorage: DeviceInfo.Capability.hasStorage,
+        support3d: DeviceInfo.Capability.support3d,
+        supportUHD: DeviceInfo.Capability.supportUHD,
+        supportHDR: DeviceInfo.Capability.supportHDR,
+        supportWebSocket: DeviceInfo.Capability.supportWebSocket,
+        supportPlayready: DeviceInfo.Capability.supportPlayready,
+        supportWidevineModular: DeviceInfo.Capability.supportWidevineModular,
+        supportWidevineClassic: DeviceInfo.Capability.supportWidevineClassic,
+        supportAdobeHDS: DeviceInfo.Capability.supportAdobeHDS,
+        supportAppleHLS: DeviceInfo.Capability.supportAppleHLS,
+        supportMSSmoothStreaming: DeviceInfo.Capability.supportMSSmoothStreaming,
+        supportMPEG_DASH: DeviceInfo.Capability.supportMPEG_DASH,
+        drmMethod: DeviceInfo.Capability.drmMethod,
+        supportOIPF: DeviceInfo.Capability.supportOIPF,
+        supportEME: DeviceInfo.Capability.supportEME,
+        supportKeyNumeric: DeviceInfo.Capability.supportKeyNumeric,
+        supportKeyColor: DeviceInfo.Capability.supportKeyColor,
+        supportmultiscreen: DeviceInfo.Capability.supportmultiscreen,
+        multiaudioSupport: DeviceInfo.Capability.multiaudioSupport,
+        TTMLInbandSupport: DeviceInfo.Capability.TTMLInbandSupport,
+        TTMLOutofbandSupport: DeviceInfo.Capability.TTMLOutofbandSupport,
+        supportFHD: DeviceInfo.Capability.supportFHD,
+        supportHDR_HDR10: DeviceInfo.Capability.supportHDR_HDR10,
+        supportHDR_DV: DeviceInfo.Capability.supportHDR_DV,
+      };
+
     console.log('Informations sur l\'appareil :', deviceInfo);
     document.getElementById('manufacturer').innerText = `Manufacturer: ${deviceInfo.vendor}`;
-    document.getElementById('modelName').innerText = `Model Name: ${deviceInfo.modelName}`;
+    document.getElementById('modelName').innerText = `Model Name: ${deviceInfo.vendor}`;
     document.getElementById('firmwareVersion').innerText = `Firmware Version: ${deviceInfo.firmwareVersion}`;
     document.getElementById('os').innerText = `OS: ${deviceInfo.os}`;
     document.getElementById('userAgent').innerText = `User Agent: ${navigator.userAgent}`;
