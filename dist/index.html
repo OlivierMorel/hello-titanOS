@@ -77,61 +77,58 @@ SPDX-License-Identifier: Apache-2.0
 
     window.onDeviceInfoReady(function (info) {
       console.log("Infos TitanOS prêtes :", info)
-      if (info) {
-        document.getElementById('os').innerText = `OS: ${info.Capability.os}`;
-      } else
-      console.log("info null")
-    })
+      if (typeof DeviceInfo !== 'undefined') {
+        const deviceInfo = {
+          appStore: info.Channel.appStore,
+          vendor: info.Channel.vendor,
+          brand: info.Channel.brand,
+          platform: info.Product.platform,
+          year: info.Product.year,
+          deviceID: info.Product.deviceID,
+          WhaleAdID: info.Product.WhaleAdID,
+          firmwareComponentID: info.Product.firmwareComponentID,
+          firmwareVersion: info.Product.firmwareVersion,
+          os: info.Capability.os,
+          browserEngine: info.Capability.browserEngine,
+          hasStorage: info.Capability.hasStorage,
+          support3d: info.Capability.support3d,
+          supportUHD: info.Capability.supportUHD,
+          supportHDR: info.Capability.supportHDR,
+          supportWebSocket: info.Capability.supportWebSocket,
+          supportPlayready: info.Capability.supportPlayready,
+          supportWidevineModular: info.Capability.supportWidevineModular,
+          supportWidevineClassic: info.Capability.supportWidevineClassic,
+          supportAdobeHDS: info.Capability.supportAdobeHDS,
+          supportAppleHLS: info.Capability.supportAppleHLS,
+          supportMSSmoothStreaming: info.Capability.supportMSSmoothStreaming,
+          supportMPEG_DASH: info.Capability.supportMPEG_DASH,
+          drmMethod: info.Capability.drmMethod,
+          supportOIPF: info.Capability.supportOIPF,
+          supportEME: info.Capability.supportEME,
+          supportKeyNumeric: info.Capability.supportKeyNumeric,
+          supportKeyColor: info.Capability.supportKeyColor,
+          supportmultiscreen: info.Capability.supportmultiscreen,
+          multiaudioSupport: info.Capability.multiaudioSupport,
+          TTMLInbandSupport: info.Capability.TTMLInbandSupport,
+          TTMLOutofbandSupport: info.Capability.TTMLOutofbandSupport,
+          supportFHD: info.Capability.supportFHD,
+          supportHDR_HDR10: info.Capability.supportHDR_HDR10,
+          supportHDR_DV: info.Capability.supportHDR_DV,
+        };
 
-    if (typeof DeviceInfo !== 'undefined') {
-      const deviceInfo = {
-        appStore: DeviceInfo.Channel.appStore,
-        vendor: DeviceInfo.Channel.vendor,
-        brand: DeviceInfo.Channel.brand,
-        platform: DeviceInfo.Product.platform,
-        year: DeviceInfo.Product.year,
-        deviceID: DeviceInfo.Product.deviceID,
-        WhaleAdID: DeviceInfo.Product.WhaleAdID,
-        firmwareComponentID: DeviceInfo.Product.firmwareComponentID,
-        firmwareVersion: DeviceInfo.Product.firmwareVersion,
-        os: DeviceInfo.Capability.os,
-        browserEngine: DeviceInfo.Capability.browserEngine,
-        hasStorage: DeviceInfo.Capability.hasStorage,
-        support3d: DeviceInfo.Capability.support3d,
-        supportUHD: DeviceInfo.Capability.supportUHD,
-        supportHDR: DeviceInfo.Capability.supportHDR,
-        supportWebSocket: DeviceInfo.Capability.supportWebSocket,
-        supportPlayready: DeviceInfo.Capability.supportPlayready,
-        supportWidevineModular: DeviceInfo.Capability.supportWidevineModular,
-        supportWidevineClassic: DeviceInfo.Capability.supportWidevineClassic,
-        supportAdobeHDS: DeviceInfo.Capability.supportAdobeHDS,
-        supportAppleHLS: DeviceInfo.Capability.supportAppleHLS,
-        supportMSSmoothStreaming: DeviceInfo.Capability.supportMSSmoothStreaming,
-        supportMPEG_DASH: DeviceInfo.Capability.supportMPEG_DASH,
-        drmMethod: DeviceInfo.Capability.drmMethod,
-        supportOIPF: DeviceInfo.Capability.supportOIPF,
-        supportEME: DeviceInfo.Capability.supportEME,
-        supportKeyNumeric: DeviceInfo.Capability.supportKeyNumeric,
-        supportKeyColor: DeviceInfo.Capability.supportKeyColor,
-        supportmultiscreen: DeviceInfo.Capability.supportmultiscreen,
-        multiaudioSupport: DeviceInfo.Capability.multiaudioSupport,
-        TTMLInbandSupport: DeviceInfo.Capability.TTMLInbandSupport,
-        TTMLOutofbandSupport: DeviceInfo.Capability.TTMLOutofbandSupport,
-        supportFHD: DeviceInfo.Capability.supportFHD,
-        supportHDR_HDR10: DeviceInfo.Capability.supportHDR_HDR10,
-        supportHDR_DV: DeviceInfo.Capability.supportHDR_DV,
-      };
+      console.log('Informations sur l\'appareil :', deviceInfo);
+      document.getElementById('manufacturer').innerText = `Manufacturer: ${deviceInfo.vendor}`;
+      document.getElementById('modelName').innerText = `Model Name: ${deviceInfo.vendor}`;
+      document.getElementById('firmwareVersion').innerText = `Firmware Version: ${deviceInfo.firmwareVersion}`;
+      document.getElementById('os').innerText = `OS: ${deviceInfo.os}`;
+      document.getElementById('userAgent').innerText = `User Agent: ${navigator.userAgent}`;
 
-    console.log('Informations sur l\'appareil :', deviceInfo);
-    document.getElementById('manufacturer').innerText = `Manufacturer: ${deviceInfo.vendor}`;
-    document.getElementById('modelName').innerText = `Model Name: ${deviceInfo.vendor}`;
-    document.getElementById('firmwareVersion').innerText = `Firmware Version: ${deviceInfo.firmwareVersion}`;
-    document.getElementById('os').innerText = `OS: ${deviceInfo.os}`;
-    document.getElementById('userAgent').innerText = `User Agent: ${navigator.userAgent}`;
+    } else {
+      console.error('Le SDK DeviceInfo n\'est pas disponible.');
+    }
+  })
 
-  } else {
-    console.error('Le SDK DeviceInfo n\'est pas disponible.');
-  }
+
 });
 
 </script>
